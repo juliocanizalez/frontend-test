@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CssBaseline } from '@nextui-org/react';
+import { Provider } from 'react-redux';
 
 import App from './views/App';
+import { Store } from './utils/store';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={Store}>
     <CssBaseline />
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
