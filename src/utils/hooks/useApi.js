@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useApi = ({ url }) => {
+const useApi = (url) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -11,8 +11,7 @@ const useApi = ({ url }) => {
     };
 
     fetchData();
-  }, [url]);
-
+  });
   return items;
 };
 
