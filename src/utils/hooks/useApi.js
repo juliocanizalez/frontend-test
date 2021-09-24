@@ -11,7 +11,7 @@ const useApi = (url) => {
     };
 
     fetchData();
-  });
+  }, [url]);
   return items;
 };
 
