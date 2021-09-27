@@ -5,9 +5,10 @@ import { map } from 'lodash';
 
 import MachineItem from './MachineItem';
 
-const FoodAvailable = ({ data }) => (
+const FoodAvailable = ({ data, loading }) => (
   <>
-    {data.loading ? (
+    {console.log(loading)}
+    {loading ? (
       <Grid xs={12} justify='center' alignItems='center'>
         <Loading color='secondary'>Loading data...</Loading>
       </Grid>
@@ -23,6 +24,7 @@ const FoodAvailable = ({ data }) => (
 
 const mapStateToProps = (state) => ({
   data: state.data,
+  loading: state.loading,
 });
 
 export default connect(mapStateToProps, null)(FoodAvailable);
