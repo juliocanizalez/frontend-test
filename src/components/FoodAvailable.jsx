@@ -7,7 +7,6 @@ import MachineItem from './MachineItem';
 
 const FoodAvailable = ({ data, loading }) => (
   <>
-    {console.log(loading)}
     {loading ? (
       <Grid xs={12} justify='center' alignItems='center'>
         <Loading color='secondary'>Loading data...</Loading>
