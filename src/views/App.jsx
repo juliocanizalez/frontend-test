@@ -1,11 +1,12 @@
 import React from 'react';
-import { Grid, Text, Spacer, Avatar, Loading } from '@nextui-org/react';
+import { Grid, Text, Spacer, Avatar } from '@nextui-org/react';
 import { connect } from 'react-redux';
 
 import { machineImage } from '../utils/utils';
-import MachineItem from '../components/MachineItem';
+import FoodAvailable from '../components/FoodAvailable';
+import { setFood } from '../utils/actions';
 
-const App = ({ data }) => {
+const App = () => {
   return (
     <>
       <Spacer y={3} />
@@ -21,22 +22,7 @@ const App = ({ data }) => {
             <Grid xs={12} justify='center'>
               <Text h3>List of products</Text>
             </Grid>
-            {!data && (
-              <Grid xs={12} justify='center' alignItems='center'>
-                <Loading color='secondary'>Loading data...</Loading>
-              </Grid>
-            )}
-            {data &&
-              data.map((item, index) => (
-                <Grid xs={12} justify='center'>
-                  <MachineItem
-                    key={index}
-                    name={item.name}
-                    time={`${item.preparation_time}s`}
-                    image={item.thumbnail}
-                  />
-                </Grid>
-              ))}
+            <FoodAvailable />
           </Grid.Container>
         </Grid>
         <Grid xs={12} md={6}>
@@ -54,10 +40,8 @@ const App = ({ data }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    data: state.data,
-  };
+const mapDispatchToProps = {
+  setFood,
 };
 
-export default connect(mapStateToProps, null)(App);
+export default connect(null, mapDispatchToProps)(App);
