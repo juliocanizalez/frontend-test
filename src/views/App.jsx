@@ -1,10 +1,9 @@
 import React from 'react';
 import { Grid, Text, Spacer, Avatar } from '@nextui-org/react';
-import { connect } from 'react-redux';
 
 import { machineImage } from '../utils/utils';
 import FoodAvailable from '../components/FoodAvailable';
-import { setFood } from '../utils/actions';
+import FoodInProcess from '../components/FoodInProcess';
 
 const App = () => {
   return (
@@ -31,6 +30,9 @@ const App = () => {
               <Text h3>In Process</Text>
             </Grid>
             <Grid xs={12} justify='center'>
+              <FoodInProcess />
+            </Grid>
+            <Grid xs={12} justify='center'>
               <Text h3>Done</Text>
             </Grid>
           </Grid.Container>
@@ -40,8 +42,4 @@ const App = () => {
   );
 };
 
-const mapDispatchToProps = {
-  setFood,
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
