@@ -4,6 +4,7 @@ import { Grid, Text, Spacer, Avatar } from '@nextui-org/react';
 import { machineImage } from '../utils/utils';
 import FoodAvailable from '../components/FoodAvailable';
 import FoodInProcess from '../components/FoodInProcess';
+import FoodDone from '../components/FoodDone';
 
 const App = () => {
   return (
@@ -34,6 +35,9 @@ const App = () => {
             </Grid>
             <Grid xs={12} justify='center'>
               <Text h3>Done</Text>
+            </Grid>
+            <Grid xs={12} justify='center'>
+              <FoodDone />
             </Grid>
           </Grid.Container>
         </Grid>
