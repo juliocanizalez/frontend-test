@@ -12,6 +12,7 @@ const FoodInProcess = ({ prepare, onProductDone }) => {
       {map(prepare, (foodInProcess, index) => (
         <Grid key={index} xs={12} justify='center' alignItems='center'>
           <ProcessItem
+            id={foodInProcess.id}
             name={foodInProcess.name}
             image={foodInProcess.image}
             secs={foodInProcess.time}
