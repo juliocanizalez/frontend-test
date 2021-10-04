@@ -2,14 +2,11 @@ import React from 'react';
 import { Avatar, Grid, Text } from '@nextui-org/react';
 import { useTimer } from 'reactjs-countdown-hook';
 
-const ProcessItem = ({ name, image, secs, handleProduct }) => {
-  const food = { name, image };
+const ProcessItem = ({ id, name, image, secs, handleProduct }) => {
+  const food = { id, name, image };
   const secsInt = parseInt(secs, 10);
 
-  const handleDone = () => {
-    handleProduct(food);
-  };
-  const { seconds, minutes } = useTimer(secsInt, handleDone);
+  const { seconds, minutes } = useTimer(secsInt, () => handleProduct(food));
 
   return (
     <Grid.Container justify='center' gap={1} alignItems='center'>
