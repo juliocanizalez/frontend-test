@@ -1,11 +1,20 @@
 import { keyBy } from 'lodash';
 
-import { SET_FOOD, SET_FOOD_DONE } from '../actions/actionTypes';
+import {
+  SET_CLEAR_DONE,
+  SET_DONE,
+  SET_FOOD,
+  SET_FOOD_DONE,
+  SET_PREPARE,
+} from '../actions/actionTypes';
 
 const initialState = {
   loading: true,
   data: {},
+  prepare: [],
+  done: [],
 };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_FOOD:
@@ -21,6 +30,24 @@ const reducer = (state = initialState, action) => {
           })),
           'id'
         ),
+        prepare: [],
+        done: [],
+      };
+    case SET_PREPARE:
+      return {
+        ...state,
+        prepare: [...state.prepare, action.payload],
+      };
+    case SET_DONE:
+      return {
+        ...state,
+        prepare: state.prepare.filter((items) => items.id !== action.payload),
+        done: [...state.done, action.payload],
+      };
+    case SET_CLEAR_DONE:
+      return {
+        ...state,
+        done: [],
       };
     default:
       return state;
