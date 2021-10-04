@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Avatar } from '@nextui-org/react';
+import React from 'react';
+import { Avatar, Grid, Text } from '@nextui-org/react';
+import { useTimer } from 'reactjs-countdown-hook';
 
-const Timer = ({ secs, handleProduct }) => {
-  const [time, setTime] = useState(secs);
+const ProcessItem = ({ name, image, secs, handleProduct }) => {
+  const food = { name, image };
+  const secsInt = parseInt(secs, 10);
 
-  const tick = () => {
-    time === 0 ? handleProduct() : setTime((current) => current - 1);
+  const handleDone = () => {
+    handleProduct(food);
   };
+  const { seconds, minutes } = useTimer(secsInt, handleDone);
 
-  useEffect(() => {
-    const timerId = setInterval(() => tick(), 1000);
-    return () => clearInterval(timerId);
-  });
-
-  return <Avatar squared text={time} />;
+  return (
+    <Grid.Container justify='center' gap={1} alignItems='center'>
+      <Grid xs={2}>
+        <Avatar size='large' color='secondary' src={image} zoomed />
+      </Grid>
+      <Grid xs={4}>
+        <Text h5>{name}</Text>
+      </Grid>
+      <Grid xs={2}>
+        <Text p color='primary'>
+          {minutes && seconds ? `${minutes}:${seconds}s` : `00:00s`}
+        </Text>
+      </Grid>
+    </Grid.Container>
+  );
 };
 
-export default Timer;
+export default ProcessItem;
