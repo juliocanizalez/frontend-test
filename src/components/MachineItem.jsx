@@ -2,11 +2,13 @@ import React from 'react';
 import { Text, Grid, Avatar, Button } from '@nextui-org/react';
 import { Send } from 'react-iconly';
 
-const MachineItem = ({ id, name, time, image }) => {
+const MachineItem = ({ id, name, time, image, handleSetPrepare }) => {
+  const food = { id, name, time, image };
+
   return (
     <Grid.Container justify='center' gap={1} alignItems='center'>
       <Grid xs={2}>
-        <Avatar size='large' color='secondary' src={image} zoomed />
+        <Avatar size='large' src={image} zoomed />
       </Grid>
       <Grid xs={4}>
         <Text h5>{name}</Text>
@@ -17,7 +19,11 @@ const MachineItem = ({ id, name, time, image }) => {
         </Text>
       </Grid>
       <Grid xs={2}>
-        <Button color='gradient' iconRight={<Send primaryColor='white' />} auto>
+        <Button
+          color='gradient'
+          iconRight={<Send primaryColor='white' />}
+          auto
+          onClick={() => handleSetPrepare(food)}>
           Prepare
         </Button>
       </Grid>
