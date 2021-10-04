@@ -1,4 +1,4 @@
-import { SET_PREPARE, SET_DONE, SET_FOOD, SET_FOOD_DONE } from './actionTypes';
+import { SET_PREPARE, SET_DONE, SET_FOOD, SET_FOOD_DONE, SET_CLEAR_DONE } from './actionTypes';
 import axios from 'axios';
 
 export const setPrepare = (payload) => ({
@@ -23,5 +23,10 @@ export const setFood = () => (dispatch) => {
 
 export const setDone = (payload) => ({
   type: SET_DONE,
+  payload,
+});
+
+export const setClear = (payload) => ({
+  type: SET_CLEAR_DONE,
   payload,
 });
