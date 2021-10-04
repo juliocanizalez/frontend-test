@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
     case SET_DONE:
       return {
         ...state,
-        prepare: state.prepare.filter((items) => items.id !== action.payload),
+        prepare: state.prepare.filter((items) => items.id !== action.payload.id),
         done: [...state.done, action.payload],
       };
     case SET_CLEAR_DONE:
