@@ -5,6 +5,7 @@ import { machineImage } from '../utils/utils';
 import FoodAvailable from '../components/FoodAvailable';
 import FoodInProcess from '../components/FoodInProcess';
 import FoodDone from '../components/FoodDone';
+import Container from '../components/Container/Container';
 
 const App = () => {
   return (
@@ -18,11 +19,13 @@ const App = () => {
         </Grid>
 
         <Grid xs={12} md={6} justify='center'>
-          <Grid.Container gap={1}>
+          <Grid.Container gap={1} justify='center'>
             <Grid xs={12} justify='center'>
               <Text h3>List of products</Text>
             </Grid>
-            <FoodAvailable />
+            <Container side='left'>
+              <FoodAvailable />
+            </Container>
           </Grid.Container>
         </Grid>
         <Grid xs={12} md={6}>
@@ -31,7 +34,9 @@ const App = () => {
               <Text h3>In Process</Text>
             </Grid>
             <Grid xs={12} justify='center'>
-              <FoodInProcess />
+              <Container side='right'>
+                <FoodInProcess />
+              </Container>
             </Grid>
             <Grid xs={12} justify='center'>
               <Text h3>Done</Text>
